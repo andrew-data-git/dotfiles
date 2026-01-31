@@ -1,0 +1,33 @@
+
+###############################
+# Andrew's config for Ghostty #
+###############################
+
+# visuals
+theme = Mirage
+background-opacity = 0.9
+background-blur-radius = 40
+
+# fonts
+bold-is-bright = true
+minimum-contrast = 3
+font-family = VictorMono NFM
+font-size = 14
+
+# cursor
+cursor-color = #C276FF
+cursor-text = #ffffff
+cursor-opacity = 0.8
+cursor-style-blink = false
+cursor-style = block
+
+# mouse
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
+
+# clipboard
+clipboard-read = allow
+clipboard-write = allow
+clipboard-trim-trailing-spaces = false
+
+
