@@ -1,9 +1,16 @@
 add_newline = false
 
-format = "${python}$time$directory$git_branch$git_status$character"
+format = """
+${python}\
+$time\
+$directory\
+$git_branch\
+$git_status\
+$character"""
 
 [directory]
 style = "cyan"
+format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
