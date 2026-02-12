@@ -11,10 +11,10 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "lua_ls",
-          -- "bashls",
-          -- "pyright",
-          -- "ruff",
+          "lua_ls", --lua
+          "bashls", --bash
+          "pyright", --python
+          "ruff", -- also python
         },
       })
     end,
@@ -24,25 +24,39 @@ return {
     config = function()
 
         local lspconfig = require("lspconfig")
-        lspconfig.lua_ls.setup({})
 
-        -- define configs
-        --vim.lsp.config("bashls", {})
-        --vim.lsp.config("pyright", {})
-        --vim.lsp.config("ruff", {})
+        -- lua
+        lspconfig.lua_ls.setup({
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { "vim" },
+              },
+              workspace = {
+                checkThirdParty = false,
+              },
+            },
+          },
+        })
 
-        -- enable servers
-        --vim.lsp.enable({
-        --"lua_ls",
-        -- "bashls",
-        -- "pyright",
-        -- "ruff",
-        --})
+        -- bash
+        lspconfig.bashls.setup({
+          settings = {
+            bashIde = {
+              shellcheckPath = "shellcheck",
+            },
+          },
+        })
 
+        -- python
+        lspconfig.pyright.setup({})
+        lspconfig.ruff.setup({})
+            
         -- keymaps
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
         vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
+        vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
 
     end,
     },
